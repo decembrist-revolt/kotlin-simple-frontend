@@ -5,7 +5,7 @@
 
     <groupId>org.decembrist</groupId>
     <artifactId>kotlin-simple-frontend</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <name>kotlin-simple-frontend</name>
@@ -36,7 +36,7 @@
     </distributionManagement>
 
     <scm>
-        <url>https://github.com/decembrist-revolt/decembrist-kotlin2js-reflection</url>
+        <url>https://github.com/decembrist-revolt/kotlin-simple-frontend</url>
     </scm>
 
     <developers>
@@ -62,6 +62,8 @@
         <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
         <kotlinx.coroutines.core.js.version>1.1.1</kotlinx.coroutines.core.js.version>
         <kotlinx.html.js.version>0.6.11</kotlinx.html.js.version>
+        <decembrist.jar.plugin.version>0.9.1</decembrist.jar.plugin.version>
+        <fizzed.watcher.maven.plugin>1.0.6</fizzed.watcher.maven.plugin>
     </properties>
 
     <dependencies>
@@ -110,7 +112,7 @@
             <plugin>
                 <groupId>org.decembrist</groupId>
                 <artifactId>decembrist-jar-plugin</artifactId>
-                <version>0.9.1</version>
+                <version>${decembrist.jar.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <target>JS</target>
@@ -121,7 +123,7 @@
             <plugin>
                 <groupId>com.fizzed</groupId>
                 <artifactId>fizzed-watcher-maven-plugin</artifactId>
-                <version>1.0.6</version>
+                <version>${fizzed.watcher.maven.plugin}</version>
                 <configuration>
                     <watches>
                         <watch>
@@ -167,14 +169,14 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.7</version>
+                        <groupId>org.jetbrains.dokka</groupId>
+                        <artifactId>dokka-maven-plugin</artifactId>
+                        <version>${dokka.version}</version>
                         <executions>
                             <execution>
-                                <id>attach-javadocs</id>
+                                <phase>package</phase>
                                 <goals>
-                                    <goal>jar</goal>
+                                    <goal>javadocJar</goal>
                                 </goals>
                             </execution>
                         </executions>
